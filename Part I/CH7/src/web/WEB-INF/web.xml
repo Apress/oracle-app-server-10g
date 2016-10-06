@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+    <display-name>Hello Servlet Application</display-name>
+    <distributable/>
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <description>Hello Servlet</description>
+        <servlet-class>com.apress.oracle10g.security.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>j_security_check</url-pattern>
+    </servlet-mapping>
+    <!-- Configure the roles -->
+    <security-role>
+        <role-name>sr_users</role-name>
+    </security-role>
+    <security-role>
+        <role-name>sr_admins</role-name>
+    </security-role>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Users</web-resource-name>
+            <url-pattern>/users/*</url-pattern>
+        </web-resource-collection>
+        <!-- authorization -->
+        <auth-constraint>
+            <role-name>sr_users</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Administrators Only</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <!-- authorization -->
+        <auth-constraint>
+            <role-name>sr_admins</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+</web-app>

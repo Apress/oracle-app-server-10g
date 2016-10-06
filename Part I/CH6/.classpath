@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/connector.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jmxri.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jmxgrinder.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jms.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/crimson.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/cos.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jssl-1_2.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jsse.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jnet.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jndi.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jmxtools.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/javax77.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/javax-ssl-1_2.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jaas.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/ojsp.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/mail.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jta.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/http_client.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/ejb.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jaxp.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/javax88.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/activation.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jem.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jdbc.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/lib/jcert.jar"/>
+	<classpathentry kind="lib" path="/opt/oc4j_extended/j2ee/home/oc4j.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

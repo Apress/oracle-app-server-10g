@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE orion-web-app PUBLIC "-//ORACLE//DTD OC4J Web Application 9.04//EN" "http://xmlns.oracle.com/ias/dtds/orion-web-9_04.dtd">
+
+<orion-web-app
+	deployment-version="9.0.4.0.0"
+	temporary-directory="./temp"
+	internationalize-resources="false"
+	default-mime-type="application/octet-stream"
+	default-buffer-size="2048"
+	default-charset="iso-8859-1"
+	source-directory="/WEB-INF/src"
+	simple-jsp-mapping="true"
+	servlet-webdir="/sample"
+	persistence-path="./temp"
+	jsp-timeout="100"
+	jsp-taglib-locations="/WEB-INF"
+	jsp-print-null="true"
+	jsp-cache-tlds="true"
+	jsp-cache-directory="./temp"
+	file-modification-check-interval="20000"
+	enable-jsp-dispatcher-shortcut="true"
+	directory-browsing="allow"
+	development="true">
+
+	<classpath path="./lib/util.jar"/>
+
+	<context-param-mapping name="publisher">
+		<![CDATA[
+		Apress
+		]]> 
+	</context-param-mapping>	
+
+	<access-mask default="deny">
+		<host-access domain="janm.devcake.co.uk" mode="allow"/>
+	</access-mask>
+	
+	<virtual-directory real-path="D:\var\oc4j\sample\static" virtual-path="/static"></virtual-directory>
+	
+	<servlet-chaining mime-type="text/plain" servlet-name="samplePlain"/>
+	
+	<request-tracker servlet-name="requestTrackerServlet"/>
+	
+	<session-tracking autoencode-absolute-urls="true" autoencode-urls="true" cookies="enabled"/>
+
+	<expiration-setting url-pattern="*.gif" expires="2"/>
+	
+	<web-app-class-loader search-local-classes-first="true" include-war-manifest-class-path="true" />
+
+</orion-web-app>

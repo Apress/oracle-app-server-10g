@@ -1,0 +1,89 @@
+<?xml version="1.0" standalone='yes'?>
+<!DOCTYPE jazn-data PUBLIC "JAZN-XML Data" "http://xmlns.oracle.com/ias/dtds/jazn-data.dtd">
+<jazn-data>
+
+<!-- JAZN Realm Data -->
+<jazn-realm>
+	<realm>
+		<name>helloServlet</name>
+		<users>
+			<user>
+				<name>admin</name>
+				<display-name>Administrator</display-name>
+				<credentials>!pwd</credentials>
+			</user>
+			<user>
+				<name>user</name>
+				<display-name>User</display-name>
+				<credentials>!pwd</credentials>
+			</user>
+			<user>
+				<name>me</name>
+				<display-name>Me</display-name>
+				<credentials>!pwd</credentials>
+			</user>
+			<user>
+				<name>anonymous</name>
+				<description>The default guest/anonymous user</description>
+			</user>
+		</users>
+		<roles>
+			<role>
+				<name>administrators</name>
+				<display-name>Administrator Role</display-name>
+				<members>
+					<member>
+						<type>user</type>
+						<name>admin</name>
+					</member>
+				</members>
+			</role>
+			<role>
+				<name>users</name>
+				<display-name>User Role</display-name>
+				<members>
+					<member>
+						<type>user</type>
+						<name>user</name>
+					</member>
+					<member>
+						<type>user</type>
+						<name>me</name>
+					</member>
+					<member>
+						<type>role</type>
+						<name>administrators</name>
+					</member>
+				</members>
+			</role>
+			<role>
+			     <name>anon</name>
+			     <display-name>Anonymous Role</display-name>
+			     <members>
+			             <member>
+			                 <type>user</type>
+			                 <name>anonymous</name>
+			             </member>
+			         </members>
+			 </role>
+		</roles>
+	</realm>
+</jazn-realm>
+
+<!-- JAZN Policy Data -->
+<jazn-policy>
+</jazn-policy>
+
+<!-- Permission Class Data -->
+<jazn-permission-classes>
+</jazn-permission-classes>
+
+<!-- Principal Class Data -->
+<jazn-principal-classes>
+</jazn-principal-classes>
+
+<!-- Login Module Data -->
+<jazn-loginconfig>
+</jazn-loginconfig>
+
+</jazn-data>

@@ -1,0 +1,39 @@
+<project name="sample" basedir="." default="dist">
+	
+	<!-- configure the basic directory properties -->
+	<property name="dir.java.src" value="src/java"/>
+	<property name="dir.java.build" value="build"/>
+	<property name="dir.conf.src" value="src/conf"/>
+	
+	<property name="dir.lib" value="lib"/>
+	<property name="dir.dist" value="dist"/>
+	
+	<path id="project.classpath">
+		<fileset dir="${dir.lib}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<!-- Create needed directories -->
+	<target name="init">
+		<!-- <mkdir dir="${dir.build}"/> -->
+		<mkdir dir="${dir.dist}"/>
+		<mkdir dir="${dir.java.build}"/>
+	</target>
+			
+	<target name="compile-client" depends="init">
+		<javac srcdir="${dir.java.src}" destdir="${dir.java.build}" debug="on" debuglevel="lines,vars,source">
+			<classpath refid="project.classpath"/>
+			<exclude name="**/Test*.java"/>
+			<exclude name="**/AllTests.java"/>
+		</javac>
+	</target>
+	
+	<target name="dist" depends="compile-client">
+		<jar destfile="${dir.dist}/ac.jar">
+			<fileset dir="${dir.java.build}"><include name="**/*.class"/></fileset>
+			<fileset dir="${dir.conf.src}"><include name="*/**"/></fileset>
+		</jar>
+	</target>
+	
+</project>

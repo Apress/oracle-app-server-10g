@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC '-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN' 'http://java.sun.com/dtd/web-app_2_3.dtd'>
+
+<web-app>
+<servlet>
+  <servlet-name>stateless Java web service - /ws//echoStateless</servlet-name>
+  <servlet-class>oracle.j2ee.ws.StatelessJavaRpcWebService</servlet-class>
+  <init-param>
+    <param-name>class-name</param-name>
+    <param-value>com.apress.oracle10g.webservices.EchoWebServiceStatelessImpl</param-value>
+  </init-param>
+  <init-param>
+    <param-name>interface-name</param-name>
+    <param-value>com.apress.oracle10g.webservices.EchoWebService</param-value>
+  </init-param>
+</servlet>
+
+<servlet-mapping>
+  <servlet-name>stateless Java web service - /ws//echoStateless</servlet-name>
+  <url-pattern>/echoStateless</url-pattern>
+</servlet-mapping>
+
+<welcome-file-list>
+  <welcome-file>index.html</welcome-file>
+</welcome-file-list>
+
+</web-app>

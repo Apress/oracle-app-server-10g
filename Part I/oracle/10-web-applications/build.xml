@@ -1,0 +1,92 @@
+<project name="sample" basedir="." default="dist-ear">
+	
+	<!-- configure the basic directory properties -->
+	<property name="dir.web.java.src" value="web/src/java"/>
+	<property name="dir.web.as-web.src" value="web/src/as-web"/>
+	<property name="dir.web.httpd-web.src" value="web/src/httpd-web"/>
+	<property name="dir.web.build" value="web/build"/>
+	<property name="dir.web.dist" value="web/dist"/>
+	<property name="dir.ear.src" value="ear/src"/>
+	
+	<property name="dir.util.java.src" value="util/src/java"/>
+	<property name="dir.util.build" value="util/build"/>
+	<property name="dir.util.dist" value="util/dist"/>
+
+	<property name="dir.lib" value="lib"/>
+	<property name="dir.dist" value="dist"/>
+	
+	<path id="project.classpath">
+		<fileset dir="${dir.lib}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<!-- Create needed directories -->
+	<target name="init">
+		<!-- <mkdir dir="${dir.build}"/> -->
+		<mkdir dir="${dir.dist}"/>
+		<mkdir dir="${dir.web.build}"/>
+		<mkdir dir="${dir.web.dist}"/>
+		<mkdir dir="${dir.util.build}"/>
+		<mkdir dir="${dir.util.dist}"/>
+	</target>
+			
+	<!-- Compile the sources -->
+	<target name="compile-web" depends="init, compile-util">
+		<javac srcdir="${dir.web.java.src}" destdir="${dir.web.build}" debug="on" debuglevel="lines,vars,source">
+			<classpath refid="project.classpath"/>
+			<classpath path="${dir.util.build}"/>
+			<exclude name="**/Test*.java"/>
+			<exclude name="**/AllTests.java"/>
+		</javac>
+	</target>
+
+	<target name="compile-util" depends="init">
+		<javac srcdir="${dir.util.java.src}" destdir="${dir.util.build}" debug="on" debuglevel="lines,vars,source">
+			<classpath refid="project.classpath"/>
+			<exclude name="**/Test*.java"/>
+			<exclude name="**/AllTests.java"/>
+		</javac>
+	</target>
+	
+	<target name="dist-util" depends="compile-util">
+		<jar destfile="${dir.util.dist}/util.jar">
+			<fileset dir="${dir.util.build}">
+				<include name="**/*.class"/>
+			</fileset>
+		</jar>
+	</target>
+	
+	<target name="dist-web" depends="compile-web, dist-util">
+		<delete file="${dir.dist}/sample.war"/>
+		
+		<war warfile="${dir.web.dist}/sample.war" webxml="${dir.web.as-web.src}/WEB-INF/web.xml" >
+			<classes dir="${dir.web.build}">
+				<include name="**/*.class"/>
+			</classes>
+			<lib dir="${dir.lib}" includes="*.jar"/>
+			<lib dir="${dir.util.dist}" includes="*.jar"/>			
+
+			<fileset dir="${dir.web.as-web.src}">
+				<include name="**/*.xml"/>
+				<include name="**/*.jsp"/>
+				<include name="**/*.types"/>
+				<exclude name="**/web.xml"/>
+			</fileset>
+			<fileset dir="${dir.web.httpd-web.src}">
+				<include name="**/*"/>
+			</fileset>
+		</war>
+	</target>
+	
+	<target name="dist-ear" depends="dist-web">
+		<delete file="${dir.dist}/sample.ear"/>
+		
+		<ear destfile="${dir.dist}/sample.ear" appxml="${dir.ear.src}/META-INF/application.xml">
+			<fileset dir="${dir.web.dist}">
+				<include name="**/*.war"/>
+			</fileset>
+		</ear>
+	</target>
+
+</project>

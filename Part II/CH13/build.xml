@@ -1,0 +1,48 @@
+<project name="OC4J Services" default="deploy">
+
+	<property name="dir.java.src" value="src/java"/>
+	<property name="dir.web.src" value="src/web"/>
+	<property name="dir.app.src" value="src/app"/>
+	<property name="dir.build" value="bin"/>
+	<property name="dir.lib" value="lib"/>
+	<property name="j2ee.home" value="/opt/oc4j_extended/j2ee/home"/>
+	<property name="oc4j.home" value="/opt/oc4j_extended/"/>
+	
+	<path id="project.classpath">
+		<fileset dir="${j2ee.home}/lib" includes="*.jar"/>
+		<fileset dir="${j2ee.home}" includes="*.jar"/>
+		<fileset dir="${dir.lib}" includes="*.jar"/>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${dir.build}"/>
+		<mkdir dir="${dir.build}"/>
+	</target>
+
+	<target name="compile" depends="clean">
+		<javac srcdir="${dir.java.src}" destdir="${dir.build}" 
+			includes="**/*.java" classpathref="project.classpath"/>
+	</target>
+	
+	
+	<target name="ws" depends="compile">
+		<exec executable="java">
+			<arg line="-jar ${oc4j.home}/webservices/lib/WebServicesAssembler.jar -config ${dir.web.src}/config.xml"/>
+		</exec>
+	</target>
+	
+	<target name="deploy" depends="ws">
+		<echo message="Deploying..."/>
+		<!-- Deploy -->
+		<exec executable="java">
+			<arg line="-jar ${j2ee.home}/admin.jar ormi:// admin welcome -deploy -file echows.ear -deploymentName echows"/>
+		</exec>
+		
+		<echo message="Binding Web App..."/>
+		<!-- Bind Web App -->
+		<exec executable="java">
+			<arg line="-jar ${j2ee.home}/admin.jar ormi:// admin welcome -bindWebApp echows echows_web http-web-site /ws/"/>
+		</exec>
+	</target>
+
+</project>

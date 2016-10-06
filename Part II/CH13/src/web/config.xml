@@ -1,0 +1,23 @@
+<web-service>
+    <display-name>Echo Web Service</display-name>
+    <description>Oracle 10g Web Service Example</description>
+    <destination-path>./echows.ear</destination-path>
+    
+    <context>/ws</context>
+    
+    <option name="source-path">./bin</option>
+    
+    <temporary-directory>./tmp</temporary-directory>
+    
+    <stateless-java-service>
+        <class-name>com.apress.oracle10g.webservices.EchoWebServiceStatelessImpl</class-name>
+        <interface-name>com.apress.oracle10g.webservices.EchoWebService</interface-name>
+        <uri>/echoStateless</uri>
+    </stateless-java-service>
+    
+    <stateful-java-service>
+        <class-name>com.apress.oracle10g.webservices.EchoWebServiceStatefulImpl</class-name>
+        <interface-name>com.apress.oracle10g.webservices.EchoWebService</interface-name>
+        <uri>/echoStateful</uri>
+    </stateful-java-service>
+</web-service>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC '-//Sun Microsystems, Inc.//DTD J2EE Application 1.3//EN' 'http://java.sun.com/dtd/application_1_3.dtd'>
+
+<application>
+	<display-name>Echo Web Service</display-name>
+	<description>Oracle 10g Web Service Example</description>
+	<module>
+		<web>
+			<web-uri>echows_web.war</web-uri>
+			<context-root>/ws/</context-root>
+		</web>
+	</module>
+</application>

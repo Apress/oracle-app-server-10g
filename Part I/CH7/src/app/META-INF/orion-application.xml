@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE orion-application PUBLIC "-//Evermind//DTD J2EE Application runtime 1.2//EN" "http://xmlns.oracle.com/ias/dtds/orion-application.dtd">
+<orion-application deployment-version="1.0.2.2" default-data-source="jdbc/OracleDS">
+   <!-- <principals path="./principals.xml"/>
+    <user-manager class="com.evermind.sql.DataSourceUserManager">
+        <property name="dataSource" value="jdbc/HelloServletDS"/>
+        <property name="table" value="users"/>
+        <property name="debug" value="true"/>
+        <property name="userNameField" value="username"/>
+        <property name="passwordField" value="password"/>
+        <property name="groupMembershipTableName" value="usergroups"/>
+        <property name="groupMembershipGroupFieldName" value="groupname"/>
+        <property name="groupMembershipUserNameFieldName" value="username"/>
+    </user-manager>-->
+    <!--<user-manager class="com.apress.oracle10g.security.SimpleUserManager"/>-->
+    <web-module id="helloServlet-web" path="helloServlet-web.war"/>
+    <persistence path="persistence"/>
+    <security-role-mapping name="sr_users">
+        <group name="users"/>
+        <group name="TIGER\Users"/>
+    </security-role-mapping>
+    <security-role-mapping name="sr_admins">
+        <group name="administrators"/>
+    </security-role-mapping>
+    <security-role-mapping name="sr_anon">
+        <group name="anon"/>
+    </security-role-mapping>
+    <jazn provider="XML" location="./jazn-data.xml"/>
+    <!--<jazn provider="LDAP" location="ldap://tiger:389"/>-->
+    <log>
+        <file path="application.log"/>
+    </log>
+    <!--<namespace-access>
+		<read-access>
+			<namespace-resource root="">
+				<security-role-mapping name="&lt;jndi-user-role&gt;">
+					<group name="administrators" />
+				</security-role-mapping>
+			</namespace-resource>
+		</read-access>
+		<write-access>
+			<namespace-resource root="">
+				<security-role-mapping name="&lt;jndi-user-role&gt;">
+					<group name="administrators" />
+				</security-role-mapping>
+			</namespace-resource>
+		</write-access>
+	</namespace-access>-->
+</orion-application>

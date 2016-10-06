@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE oc4j-connectors PUBLIC "-//Oracle//DTD Connectors configuration" 
+  "http://xmlns.oracle.com/ias/dtds/oc4j-connectors.dtd">
+  
+<oc4j-connectors>
+    <connector name="embedded" path="embedded_ra.rar"/>
+</oc4j-connectors>

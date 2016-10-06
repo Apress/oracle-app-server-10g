@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+
+<web-app>
+   <display-name>Hello World</display-name>
+
+   <!-- security roles -->
+   <security-role>
+	<role-name>admin</role-name>
+   </security-role>
+   <security-role>
+	<role-name>user</role-name>
+   </security-role>
+   
+  <!-- security constraints -->
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Admin Pages</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
+    </web-resource-collection>    
+    <!-- authorization -->
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>User Pages</web-resource-name>
+      <url-pattern>/users/*</url-pattern>
+    </web-resource-collection>    
+    <!-- authorization -->
+    <auth-constraint>
+      <role-name>user</role-name>
+    </auth-constraint>
+  </security-constraint>
+ 
+  <login-config>
+	<auth-method>BASIC</auth-method>
+        <!--<form-login-config>
+        	<form-login-page>login.jsp</form-login-page>
+        	<form-error-page>error.jsp</form-error-page>
+         </form-login-config>-->
+  </login-config>
+
+</web-app>

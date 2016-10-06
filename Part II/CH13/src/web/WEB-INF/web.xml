@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+    <display-name>JavaMail Sample Application</display-name>
+    <!--<distributable/>
+    <servlet>
+        <servlet-name>javamail</servlet-name>
+        <description>JavaMail Servlet</description>
+        <servlet-class>com.apress.oracle10g.javamail.JavaMailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>jax</servlet-name>
+        <description>JAX Servlet</description>
+        <servlet-class>com.apress.oracle10g.xml.JaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>javamail</servlet-name>
+        <url-pattern>/send</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>jax</servlet-name>
+        <url-pattern>/jax</url-pattern>
+    </servlet-mapping>
+    <env-entry>
+        <env-entry-name>defaultSubject</env-entry-name>
+        <env-entry-value>This is the default subject</env-entry-value>
+        <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
+    <resource-ref>
+        <res-ref-name>mail/SampleMail</res-ref-name>
+        <res-type>javax.mail.Session</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>-->
+</web-app>
